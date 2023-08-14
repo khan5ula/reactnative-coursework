@@ -3,7 +3,7 @@ import Text from './Text'
 import theme from '../theme'
 import { useEffect, useState } from 'react'
 
-const cardHeaderStyles = StyleSheet.create({
+const headerStyles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexGrow: 1,
@@ -34,20 +34,20 @@ const cardHeaderStyles = StyleSheet.create({
 
 const CardHeader = ({ item }) => {
   return (
-    <View style={cardHeaderStyles.container}>
-      <View style={cardHeaderStyles.avatarContainer}>
+    <View style={headerStyles.container}>
+      <View style={headerStyles.avatarContainer}>
         <Image
-          style={cardHeaderStyles.avatar}
+          style={headerStyles.avatar}
           source={{ uri: item.ownerAvatarUrl }}
         />
       </View>
-      <View style={cardHeaderStyles.infoContainer}>
+      <View style={headerStyles.infoContainer}>
         <Text fontSize={'subheading'} fontWeight={'bold'}>
           {item.fullName}
         </Text>
         <Text>{item.description}</Text>
-        <View style={cardHeaderStyles.languageContainer}>
-          <Text style={cardHeaderStyles.languageText}>{item.language}</Text>
+        <View style={headerStyles.languageContainer}>
+          <Text style={headerStyles.languageText}>{item.language}</Text>
         </View>
       </View>
     </View>
