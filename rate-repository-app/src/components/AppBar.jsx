@@ -2,16 +2,6 @@ import { StyleSheet, View } from 'react-native'
 import theme from '../theme'
 import AppBarTab from './AppBarTab'
 
-const AppBar = () => {
-  return (
-    <View style={styles.flexContainer}>
-      <AppBarTab text="Repositories" />
-    </View>
-  )
-}
-
-export default AppBar
-
 const styles = StyleSheet.create({
   flexContainer: {
     flexDirection: 'row',
@@ -21,3 +11,13 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.appBarColor,
   },
 })
+
+const AppBar = () => {
+  return (
+    <View style={styles.flexContainer}>
+      <AppBarTab text="Repositories" />
+    </View>
+  )
+}
+
+export default AppBar

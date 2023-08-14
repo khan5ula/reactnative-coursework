@@ -1,6 +1,12 @@
 import { Pressable, View, StyleSheet } from 'react-native'
 import Text from './Text'
 
+const styles = StyleSheet.create({
+  text: {
+    padding: 5,
+  },
+})
+
 const AppBarTab = ({ text }) => {
   const handlePress = () => {
     console.log(`pressed ${text}`)
@@ -21,11 +27,5 @@ const AppBarTab = ({ text }) => {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  text: {
-    padding: 5,
-  },
-})
 
 export default AppBarTab
