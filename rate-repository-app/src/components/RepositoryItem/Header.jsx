@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import theme from '../../theme'
 
-const headerStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexGrow: 1,
@@ -32,20 +32,17 @@ const headerStyles = StyleSheet.create({
 
 const CardHeader = ({ item }) => {
   return (
-    <View style={headerStyles.container}>
-      <View style={headerStyles.avatarContainer}>
-        <Image
-          style={headerStyles.avatar}
-          source={{ uri: item.ownerAvatarUrl }}
-        />
+    <View style={styles.container}>
+      <View style={styles.avatarContainer}>
+        <Image style={styles.avatar} source={{ uri: item.ownerAvatarUrl }} />
       </View>
-      <View style={headerStyles.infoContainer}>
+      <View style={styles.infoContainer}>
         <Text fontSize={'subheading'} fontWeight={'bold'}>
           {item.fullName}
         </Text>
         <Text>{item.description}</Text>
-        <View style={headerStyles.languageContainer}>
-          <Text style={headerStyles.languageText}>{item.language}</Text>
+        <View style={styles.languageContainer}>
+          <Text style={styles.languageText}>{item.language}</Text>
         </View>
       </View>
     </View>

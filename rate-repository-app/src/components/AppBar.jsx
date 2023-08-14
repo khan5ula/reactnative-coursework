@@ -16,6 +16,7 @@ const AppBar = () => {
   return (
     <View style={styles.flexContainer}>
       <AppBarTab text="Repositories" />
+      <AppBarTab text="Sign in" />
     </View>
   )
 }

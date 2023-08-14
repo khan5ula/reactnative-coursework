@@ -1,16 +1,36 @@
 import { Pressable, View, StyleSheet } from 'react-native'
 import Text from './Text'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-native'
 
 const styles = StyleSheet.create({
   text: {
-    padding: 5,
+    padding: 6,
+    marginEnd: 12,
   },
 })
 
 const AppBarTab = ({ text }) => {
+  const [link, setLink] = useState('')
+  const navigate = useNavigate()
+
   const handlePress = () => {
-    console.log(`pressed ${text}`)
+    navigate(link)
   }
+
+  useEffect(() => {
+    switch (text) {
+      case 'Repositories':
+        setLink(`/`)
+        break
+      case 'Sign in':
+        setLink(`/signin`)
+        break
+      default:
+        setLink(`/`)
+        break
+    }
+  }, [text])
 
   return (
     <View>
