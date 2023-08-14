@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 30,
     paddingBottom: 15,
-    marginBottom: 5,
     paddingStart: 5,
     backgroundColor: theme.colors.appBarColor,
   },
