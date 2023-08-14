@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import theme from '../theme'
 import AppBarTab from './AppBarTab'
 
@@ -15,8 +15,18 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.flexContainer}>
-      <AppBarTab text="Repositories" />
-      <AppBarTab text="Sign in" />
+      <ScrollView horizontal>
+        <AppBarTab text="Repositories" />
+        <AppBarTab text="Sign in" />
+        <AppBarTab text="Test" />
+        <AppBarTab text="Test" />
+
+        <AppBarTab text="Test" />
+        <AppBarTab text="Test" />
+        <AppBarTab text="Test" />
+        <AppBarTab text="Test" />
+        <AppBarTab text="Test" />
+      </ScrollView>
     </View>
   )
 }
