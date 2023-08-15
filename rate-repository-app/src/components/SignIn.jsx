@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, View } from 'react-native'
 import theme from '../theme'
 import FormikTextInput from './FormikTextInput'
 import Text from './Text'
+import * as yup from 'yup'
 
 const initialValues = {
   username: '',
@@ -15,18 +16,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     marginTop: 20,
-  },
-  form: {
-    height: 60,
-    width: '90%',
-    margin: 8,
-    backgroundColor: 'white',
-    textAlign: 'center',
-    allowFontScaling: true,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: theme.colors.formBorder,
-    fontSize: 20,
   },
   button: {
     backgroundColor: theme.colors.primary,
@@ -47,17 +36,8 @@ const styles = StyleSheet.create({
 const Form = ({ onSubmit }) => {
   return (
     <View style={styles.container}>
-      <FormikTextInput
-        style={styles.form}
-        name="username"
-        placeholder="Username"
-      />
-      <FormikTextInput
-        style={styles.form}
-        name="password"
-        placeholder="Password"
-        secureTextEntry
-      />
+      <FormikTextInput name="username" placeholder="Username" />
+      <FormikTextInput name="password" placeholder="Password" secureTextEntry />
       <Pressable style={styles.button} onPress={onSubmit}>
         <Text style={styles.text} fontWeight={'bold'}>
           Sign in
@@ -67,6 +47,11 @@ const Form = ({ onSubmit }) => {
   )
 }
 
+const validationSchema = yup.object().shape({
+  username: yup.string().required('Username is required'),
+  password: yup.string().required('Password is required'),
+})
+
 const SignIn = () => {
   const onSubmit = (values, { resetForm }) => {
     console.log(values)
@@ -74,7 +59,11 @@ const SignIn = () => {
   }
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
       {({ handleSubmit }) => <Form onSubmit={handleSubmit} />}
     </Formik>
   )
