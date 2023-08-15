@@ -18,14 +18,6 @@ const AppBar = () => {
       <ScrollView horizontal>
         <AppBarTab text="Repositories" />
         <AppBarTab text="Sign in" />
-        <AppBarTab text="Test" />
-        <AppBarTab text="Test" />
-
-        <AppBarTab text="Test" />
-        <AppBarTab text="Test" />
-        <AppBarTab text="Test" />
-        <AppBarTab text="Test" />
-        <AppBarTab text="Test" />
       </ScrollView>
     </View>
   )
