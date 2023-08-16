@@ -10,13 +10,17 @@
     "lint": "eslint ./src/**/*.{js,jsx} App.js --no-error-on-unmatched-pattern"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.1",
+    "@expo/metro-config": "^0.10.7",
     "@expo/webpack-config": "^0.17.0",
+    "cors": "^2.8.5",
     "expo": "~47.0.0",
     "expo-status-bar": "~1.4.0",
     "formik": "^2.4.3",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "react-native": "0.69.9",
+    "graphql": "^15.8.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-native": "0.70.8",
     "react-native-web": "~0.18.7",
     "react-router-native": "^6.15.0",
     "yup": "^1.2.0"

@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native'
 import CardFooter from './Footer'
 import CardHeader from './Header'
 
-const repositoryItemStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     alignItems: 'stretch',
     padding: 12,
@@ -13,7 +13,7 @@ const repositoryItemStyles = StyleSheet.create({
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={repositoryItemStyles.container}>
+    <View style={styles.container}>
       <CardHeader item={item} />
       <CardFooter item={item} />
     </View>
