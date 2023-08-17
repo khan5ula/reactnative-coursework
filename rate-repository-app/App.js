@@ -1,12 +1,15 @@
 import { ApolloProvider } from '@apollo/client'
+import Constants from 'expo-constants'
+import { StatusBar } from 'expo-status-bar'
 import { NativeRouter } from 'react-router-native'
 import Main from './src/components/Main'
 import createApolloClient from './src/utils/apolloClient'
-import { StatusBar } from 'expo-status-bar'
 
 const apolloClient = createApolloClient()
 
 const App = () => {
+  console.log(Constants.manifest)
+
   return (
     <>
       <NativeRouter>
