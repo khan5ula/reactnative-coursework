@@ -5,6 +5,7 @@ import useSignIn from '../hooks/useSignIn'
 import theme from '../theme'
 import FormikTextInput from './FormikTextInput'
 import Text from './Text'
+import AuthStorage from '../utils/authStorage'
 
 const initialValues = {
   username: '',
@@ -55,6 +56,12 @@ const validationSchema = yup.object().shape({
 
 const SignIn = () => {
   const [signIn] = useSignIn()
+  const userStorage = new AuthStorage('userStorage')
+
+  const setToken = async (data) => {
+    const token = data.authenticate.accessToken
+    await userStorage.setAccessToken(token)
+  }
 
   const onSubmit = async (values, { resetForm }) => {
     const { username, password } = values
@@ -62,7 +69,8 @@ const SignIn = () => {
 
     try {
       const { data } = await signIn(username, password)
-      console.log(data)
+      await setToken(data)
+      console.log(`token: ${String(await userStorage.getAccessToken())}`)
     } catch (e) {
       console.log(`sign in error: ${JSON.stringify(e)}`)
     }
