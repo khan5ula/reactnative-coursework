@@ -1,6 +1,8 @@
 import { ScrollView, StyleSheet, View } from 'react-native'
 import theme from '../theme'
 import AppBarTab from './AppBarTab'
+import useMe from '../hooks/useMe'
+import useSignOut from '../hooks/useSignOut'
 
 const styles = StyleSheet.create({
   flexContainer: {
@@ -13,11 +15,15 @@ const styles = StyleSheet.create({
 })
 
 const AppBar = () => {
+  const { me } = useMe()
+  const signOut = useSignOut()
+
   return (
     <View style={styles.flexContainer}>
       <ScrollView horizontal>
-        <AppBarTab text="Repositories" />
-        <AppBarTab text="Sign in" />
+        <AppBarTab text="Repositories" url="/" />
+        {!me && <AppBarTab text="Sign in" url="signin" />}
+        {me && <AppBarTab text="Sign out" url="/" onPress={signOut} />}
       </ScrollView>
     </View>
   )

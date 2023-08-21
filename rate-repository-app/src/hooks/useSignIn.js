@@ -8,6 +8,8 @@ const useSignIn = () => {
   const client = useApolloClient()
 
   const signIn = async (username, password) => {
+    console.log('signing in...')
+
     const useMutate = await mutate({
       variables: {
         username,

@@ -1,7 +1,6 @@
-import { Pressable, View, StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import { Link } from 'react-router-native'
 import Text from './Text'
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-native'
 
 const styles = StyleSheet.create({
   text: {
@@ -10,31 +9,10 @@ const styles = StyleSheet.create({
   },
 })
 
-const AppBarTab = ({ text }) => {
-  const [link, setLink] = useState('')
-  const navigate = useNavigate()
-
-  const handlePress = () => {
-    navigate(link)
-  }
-
-  useEffect(() => {
-    switch (text) {
-      case 'Repositories':
-        setLink(`/`)
-        break
-      case 'Sign in':
-        setLink(`/signin`)
-        break
-      default:
-        setLink(`/`)
-        break
-    }
-  }, [text])
-
+const AppBarTab = ({ text, url, onPress }) => {
   return (
     <View>
-      <Pressable onPress={handlePress}>
+      <Link to={url} onPress={onPress}>
         <Text
           style={styles.text}
           color="appBarTitle"
@@ -43,7 +21,7 @@ const AppBarTab = ({ text }) => {
         >
           {text}
         </Text>
-      </Pressable>
+      </Link>
     </View>
   )
 }
