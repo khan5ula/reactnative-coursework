@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const Form = ({ onSubmit }) => {
+export const SignInForm = ({ onSubmit }) => {
   return (
     <View style={styles.container}>
       <FormikTextInput name="username" placeholder="Username" />
@@ -76,7 +76,7 @@ const SignIn = () => {
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit }) => <Form onSubmit={handleSubmit} />}
+      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
     </Formik>
   )
 }

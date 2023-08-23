@@ -47,8 +47,6 @@ describe('Example', () => {
       content: 'something goes there',
     })
 
-    // The mock onSubmit function should only have been called once
-    const calls = onSubmit.mock.calls.length
-    expect(calls).toEqual(1)
+    expect(onSubmit).toHaveBeenCalledTimes(1)
   })
 })
