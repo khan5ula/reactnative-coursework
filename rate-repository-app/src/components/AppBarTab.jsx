@@ -1,5 +1,5 @@
-import { StyleSheet, View } from 'react-native'
-import { Link } from 'react-router-native'
+import { Pressable, StyleSheet, View } from 'react-native'
+import { useNavigate } from 'react-router-native'
 import Text from './Text'
 
 const styles = StyleSheet.create({
@@ -10,9 +10,18 @@ const styles = StyleSheet.create({
 })
 
 const AppBarTab = ({ text, url, onPress }) => {
+  const navigate = useNavigate()
+
+  const handlePress = () => {
+    if (onPress) {
+      onPress()
+    }
+    navigate(url)
+  }
+
   return (
     <View>
-      <Link to={url} onPress={onPress}>
+      <Pressable onPress={() => handlePress()}>
         <Text
           style={styles.text}
           color="appBarTitle"
@@ -21,7 +30,7 @@ const AppBarTab = ({ text, url, onPress }) => {
         >
           {text}
         </Text>
-      </Link>
+      </Pressable>
     </View>
   )
 }
