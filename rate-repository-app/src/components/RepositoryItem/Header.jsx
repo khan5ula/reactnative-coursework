@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
   infoContainer: {
     flexGrow: 1,
   },
+  descriptionText: {
+    width: '98%',
+  },
   languageContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -41,7 +44,9 @@ const CardHeader = ({ item }) => {
         <Text fontSize={'subheading'} fontWeight={'bold'}>
           {item.fullName}
         </Text>
-        <Text>{item.description}</Text>
+        <View style={styles.descriptionText}>
+          <Text>{item.description}</Text>
+        </View>
         <View style={styles.languageContainer}>
           <Text style={styles.languageText}>{item.language}</Text>
         </View>

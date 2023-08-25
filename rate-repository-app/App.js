@@ -22,7 +22,7 @@ const App = () => {
           </AuthStorageContext.Provider>
         </ApolloProvider>
       </NativeRouter>
-      <StatusBar style="auto" />
+      <StatusBar style="inverted" />
     </>
   )
 }
