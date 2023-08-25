@@ -1,10 +1,11 @@
-import { Pressable, StyleSheet, View, Animated } from 'react-native'
+import * as Linking from 'expo-linking'
+import { Animated, Pressable, StyleSheet, View } from 'react-native'
 import { useNavigate } from 'react-router-native'
 import theme from '../../theme'
+import { animated, fadeIn, fadeOut } from '../../utils/animated'
 import Text from '../Text'
 import CardFooter from './Footer'
 import CardHeader from './Header'
-import * as Linking from 'expo-linking'
 
 const styles = StyleSheet.create({
   container: {
@@ -47,23 +48,6 @@ const RepositoryItem = ({ item, showUrl }) => {
     if (showUrl && Linking.canOpenURL(item.url)) {
       Linking.openURL(item.url)
     }
-  }
-
-  const animated = new Animated.Value(1)
-
-  const fadeIn = () => {
-    Animated.timing(animated, {
-      toValue: 0.1,
-      duration: 100,
-      useNativeDriver: true,
-    }).start()
-  }
-  const fadeOut = () => {
-    Animated.timing(animated, {
-      toValue: 1,
-      duration: 200,
-      useNativeDriver: true,
-    }).start()
   }
 
   return (

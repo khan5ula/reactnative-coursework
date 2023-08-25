@@ -25,6 +25,9 @@ const theme = {
     normal: '400',
     bold: '700',
   },
+  itemSeparator: {
+    height: 10,
+  },
 }
 
 export default theme
