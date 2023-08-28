@@ -15,7 +15,7 @@ const validationSchema = yup.object().shape({
   username: yup.string().required('Username is required').min(5).max(30),
   password: yup.string().required('Password is required').min(5).max(30),
   passwordConfirmation: yup
-    .string('error')
+    .string()
     .min(5)
     .max(30)
     .required('Password confirmation is required')
