@@ -22,6 +22,7 @@ const AppBar = () => {
     <View style={styles.flexContainer}>
       <ScrollView horizontal>
         <AppBarTab text="Repositories" url="/" />
+        {!me && <AppBarTab text="Sign up" url="signup" />}
         {!me && <AppBarTab text="Sign in" url="signin" />}
         {me && <AppBarTab text="Create a review" url="/review" />}
         {me && <AppBarTab text="Sign out" url="/" onPress={signOut} />}
