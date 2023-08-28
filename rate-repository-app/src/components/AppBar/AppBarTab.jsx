@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, View } from 'react-native'
 import { useNavigate } from 'react-router-native'
-import Text from './Text'
+import Text from '../Text'
 
 const styles = StyleSheet.create({
   text: {

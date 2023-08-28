@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   descriptionText: {
-    width: '98%',
+    width: '95%',
   },
   languageContainer: {
     flexDirection: 'row',

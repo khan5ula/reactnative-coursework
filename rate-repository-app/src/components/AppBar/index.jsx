@@ -1,8 +1,8 @@
 import { ScrollView, StyleSheet, View } from 'react-native'
-import theme from '../theme'
+import theme from '../../theme'
 import AppBarTab from './AppBarTab'
-import useMe from '../hooks/useMe'
-import useSignOut from '../hooks/useSignOut'
+import useMe from '../../hooks/useMe'
+import useSignOut from '../../hooks/useSignOut'
 
 const styles = StyleSheet.create({
   flexContainer: {
