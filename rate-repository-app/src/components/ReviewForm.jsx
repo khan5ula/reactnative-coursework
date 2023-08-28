@@ -1,5 +1,5 @@
 import { Formik } from 'formik'
-import { Pressable, StyleSheet, View } from 'react-native'
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native'
 import { useNavigate } from 'react-router-native'
 import * as yup from 'yup'
 import useReview from '../hooks/useReview'
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     marginTop: 20,
+    flexGrow: 1,
   },
   button: {
     backgroundColor: theme.colors.primary,
@@ -39,13 +40,20 @@ const styles = StyleSheet.create({
 
 export const Form = ({ onSubmit }) => {
   return (
-    <View style={styles.container}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={styles.container}
+    >
       <FormikTextInput
         name="repositoryOwnerName"
         placeholder="Repository owner name"
       />
       <FormikTextInput name="repositoryName" placeholder="Repository name" />
-      <FormikTextInput name="rating" placeholder="Rating between 0 - 100" />
+      <FormikTextInput
+        name="rating"
+        placeholder="Rating between 0 - 100"
+        keyboardType="number-pad"
+      />
       <FormikTextInput
         name="review"
         placeholder="Your review"
@@ -58,13 +66,21 @@ export const Form = ({ onSubmit }) => {
           Submit
         </Text>
       </Pressable>
-    </View>
+    </ScrollView>
   )
 }
 
 const validationSchema = yup.object().shape({
-  //username: yup.string().required('Username is required'),
-  //password: yup.string().required('Password is required'),
+  repositoryOwnerName: yup
+    .string()
+    .required('Name of the repository owner is required'),
+  repositoryName: yup.string().required('Name of the repository is required'),
+  rating: yup
+    .number()
+    .required('Rating of the repository is required')
+    .min(0, 'The minimum viable rating is 0')
+    .max(100, 'The maximum viable rating is 100'),
+  review: yup.string().required('Review of the repository is required'),
 })
 
 const ReviewForm = () => {

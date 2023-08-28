@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
 })
 
 const Review = ({ review }) => {
-  console.log(JSON.stringify(review))
   return (
     <View style={styles.container}>
       <Content review={review} />

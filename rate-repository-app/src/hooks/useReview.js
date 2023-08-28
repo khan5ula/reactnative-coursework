@@ -5,8 +5,6 @@ const useReview = () => {
   const [mutate, result] = useMutation(REVIEW)
 
   const submitReview = async (reviewInput) => {
-    console.log('sending a review...')
-
     const { data } = await mutate({
       variables: {
         review: {

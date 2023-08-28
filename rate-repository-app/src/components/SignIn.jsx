@@ -1,5 +1,5 @@
 import { Formik } from 'formik'
-import { Pressable, StyleSheet, View } from 'react-native'
+import { Pressable, ScrollView, StyleSheet } from 'react-native'
 import { useNavigate } from 'react-router-native'
 import * as yup from 'yup'
 import useSignIn from '../hooks/useSignIn'
@@ -37,7 +37,10 @@ const styles = StyleSheet.create({
 
 export const SignInForm = ({ onSubmit }) => {
   return (
-    <View style={styles.container}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={styles.container}
+    >
       <FormikTextInput name="username" placeholder="Username" />
       <FormikTextInput name="password" placeholder="Password" secureTextEntry />
       <Pressable style={styles.button} onPress={onSubmit}>
@@ -45,7 +48,7 @@ export const SignInForm = ({ onSubmit }) => {
           Sign in
         </Text>
       </Pressable>
-    </View>
+    </ScrollView>
   )
 }
 
