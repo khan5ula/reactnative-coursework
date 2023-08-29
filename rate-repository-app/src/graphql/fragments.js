@@ -27,8 +27,27 @@ export const REPOSITORY_REVIEWS = gql`
             id
             username
           }
+          repository {
+            fullName
+          }
         }
       }
+    }
+  }
+`
+
+export const USER_REVIEWS = gql`
+  fragment MyReviews on Review {
+    id
+    text
+    rating
+    createdAt
+    user {
+      id
+      username
+    }
+    repository {
+      fullName
     }
   }
 `

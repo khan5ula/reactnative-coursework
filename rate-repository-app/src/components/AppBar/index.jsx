@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 })
 
 const AppBar = () => {
-  const { me } = useMe()
+  const { me } = useMe({ includeReviews: false })
   const signOut = useSignOut()
 
   return (
@@ -25,6 +25,7 @@ const AppBar = () => {
         {!me && <AppBarTab text="Sign up" url="signup" />}
         {!me && <AppBarTab text="Sign in" url="signin" />}
         {me && <AppBarTab text="Create a review" url="/review" />}
+        {me && <AppBarTab text="My reviews" url="/myreviews" />}
         {me && <AppBarTab text="Sign out" url="/" onPress={signOut} />}
       </ScrollView>
     </View>

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const Content = ({ review }) => {
+const Content = ({ review, repoView }) => {
   const date = new Date(review.createdAt).toLocaleDateString('fi-FI', {
     year: 'numeric',
     month: 'numeric',
@@ -54,9 +54,15 @@ const Content = ({ review }) => {
         </Text>
       </View>
       <View style={styles.infoContainer}>
-        <Text fontSize={'subheading'} fontWeight={'bold'}>
-          {review.user.username}
-        </Text>
+        {repoView ? (
+          <Text fontSize={'subheading'} fontWeight={'bold'}>
+            {review.repository.fullName}
+          </Text>
+        ) : (
+          <Text fontSize={'subheading'} fontWeight={'bold'}>
+            {review.user.username}
+          </Text>
+        )}
         <View style={styles.dateContainer}>
           <Text>{date}</Text>
         </View>
