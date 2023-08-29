@@ -11,8 +11,16 @@ const RepositoryListContainer = ({
   setOrderBy,
   orderDirection,
   setOrderDirection,
+  searchKeyword,
+  setSearchkeyword,
+  debouncedKeyword,
 }) => {
-  const { repositories } = useRepositories(orderBy, orderDirection)
+  const { repositories } = useRepositories(
+    orderBy,
+    orderDirection,
+    searchKeyword,
+    debouncedKeyword
+  )
 
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
@@ -28,6 +36,8 @@ const RepositoryListContainer = ({
         <RepositoryPicker
           setOrderBy={setOrderBy}
           setOrderDirection={setOrderDirection}
+          searchKeyword={searchKeyword}
+          setSearchkeyword={setSearchkeyword}
         />
       }
       ListHeaderComponentStyle={{ zIndex: 1 }}
