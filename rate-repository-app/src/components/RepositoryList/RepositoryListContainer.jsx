@@ -15,12 +15,13 @@ const RepositoryListContainer = ({
   setSearchkeyword,
   debouncedKeyword,
 }) => {
-  const { repositories, loading } = useRepositories(
+  const { repositories, loading, fetchMore } = useRepositories({
     orderBy,
     orderDirection,
     searchKeyword,
-    debouncedKeyword
-  )
+    debouncedKeyword,
+    first: 8,
+  })
 
   if (loading) {
     return (
@@ -33,6 +34,10 @@ const RepositoryListContainer = ({
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : []
+
+  const onEndReach = () => {
+    fetchMore()
+  }
 
   return (
     <FlatList
@@ -49,6 +54,8 @@ const RepositoryListContainer = ({
         />
       }
       ListHeaderComponentStyle={{ zIndex: 1 }}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   )
 }
