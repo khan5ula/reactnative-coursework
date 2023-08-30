@@ -1,6 +1,7 @@
-import { Pressable, StyleSheet, View } from 'react-native'
+import { Pressable, StyleSheet, View, Animated } from 'react-native'
 import { useNavigate } from 'react-router-native'
 import Text from '../Text'
+import { useAnimatedButton } from '../../hooks/useAnimatedButton'
 
 const styles = StyleSheet.create({
   text: {
@@ -11,6 +12,7 @@ const styles = StyleSheet.create({
 
 const AppBarTab = ({ text, url, onPress }) => {
   const navigate = useNavigate()
+  const buttonAnimation = useAnimatedButton()
 
   const handlePress = () => {
     if (onPress) {
@@ -21,15 +23,21 @@ const AppBarTab = ({ text, url, onPress }) => {
 
   return (
     <View>
-      <Pressable onPress={() => handlePress()}>
-        <Text
-          style={styles.text}
-          color="appBarTitle"
-          fontWeight="bold"
-          fontSize="subheading"
-        >
-          {text}
-        </Text>
+      <Pressable
+        onPressIn={buttonAnimation.fadeIn}
+        onPressOut={buttonAnimation.fadeOut}
+        onPress={() => handlePress()}
+      >
+        <Animated.View style={{ opacity: buttonAnimation.animatedValue }}>
+          <Text
+            style={styles.text}
+            color="appBarTitle"
+            fontWeight="bold"
+            fontSize="subheading"
+          >
+            {text}
+          </Text>
+        </Animated.View>
       </Pressable>
     </View>
   )
