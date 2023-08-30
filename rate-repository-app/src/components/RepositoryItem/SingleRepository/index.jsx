@@ -6,7 +6,7 @@ import ReviewContainer from './ReviewContainer'
 
 const SingleRepository = () => {
   const { id } = useParams()
-  const { repository, loading } = useRepository(id)
+  const { repository, loading, fetchMore } = useRepository({ id: id, first: 4 })
 
   if (loading) {
     return (
@@ -18,7 +18,11 @@ const SingleRepository = () => {
 
   return repository ? (
     <View>
-      <ReviewContainer reviews={repository.reviews} repository={repository} />
+      <ReviewContainer
+        reviews={repository.reviews}
+        repository={repository}
+        fetchMore={fetchMore}
+      />
     </View>
   ) : (
     <></>

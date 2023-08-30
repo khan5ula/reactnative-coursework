@@ -15,23 +15,27 @@ export const REPOSITORY_DETAILS = gql`
 `
 
 export const REPOSITORY_REVIEWS = gql`
-  fragment Reviews on Repository {
-    reviews {
-      edges {
-        node {
+  fragment Reviews on ReviewConnection {
+    edges {
+      node {
+        id
+        text
+        rating
+        createdAt
+        user {
           id
-          text
-          rating
-          createdAt
-          user {
-            id
-            username
-          }
-          repository {
-            fullName
-          }
+          username
+        }
+        repository {
+          fullName
         }
       }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      startCursor
+      hasNextPage
     }
   }
 `

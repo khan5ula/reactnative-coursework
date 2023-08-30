@@ -121,7 +121,7 @@ const Content = ({ review, repoView, refetch }) => {
           </Text>
         </View>
         <View style={styles.infoContainer}>
-          {repoView ? (
+          {!repoView ? (
             <Text fontSize={'subheading'} fontWeight={'bold'}>
               {review.repository.fullName}
             </Text>

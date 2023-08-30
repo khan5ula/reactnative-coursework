@@ -41,11 +41,13 @@ export const ME = gql`
 `
 
 export const GET_REPOSITORY = gql`
-  query Repository($id: ID!) {
+  query Repository($id: ID!, $first: Int, $after: String) {
     repository(id: $id) {
       url
       ...RepositoryDetails
-      ...Reviews
+      reviews(first: $first, after: $after) {
+        ...Reviews
+      }
     }
   }
   ${REPOSITORY_DETAILS},
