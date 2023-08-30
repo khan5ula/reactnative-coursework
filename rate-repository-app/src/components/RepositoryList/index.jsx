@@ -6,7 +6,7 @@ const RepositoryList = () => {
   const [orderBy, setOrderBy] = useState('CREATED_AT')
   const [orderDirection, setOrderDirection] = useState('DESC')
   const [searchKeyword, setSearchkeyword] = useState('')
-  const [debouncedKeyword] = useDebounce(searchKeyword, 500)
+  const [debouncedKeyword] = useDebounce(searchKeyword, 650)
 
   return (
     <RepositoryListContainer

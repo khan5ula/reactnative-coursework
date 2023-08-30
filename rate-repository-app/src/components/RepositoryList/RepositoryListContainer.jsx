@@ -18,8 +18,7 @@ const RepositoryListContainer = ({
   const { repositories, loading, fetchMore } = useRepositories({
     orderBy,
     orderDirection,
-    searchKeyword,
-    debouncedKeyword,
+    searchKeyword: debouncedKeyword,
     first: 8,
   })
 
