@@ -1,8 +1,8 @@
 import * as Linking from 'expo-linking'
 import { Animated, Pressable, StyleSheet, View } from 'react-native'
 import { useNavigate } from 'react-router-native'
-import theme from '../../theme'
 import { useAnimatedButton } from '../../hooks/useAnimatedButton'
+import theme from '../../theme'
 import Text from '../Text'
 import CardFooter from './Footer'
 import CardHeader from './Header'
@@ -51,10 +51,24 @@ const RepositoryItem = ({ item, showUrl }) => {
   }
 
   const githubLinkAnimation = useAnimatedButton()
+  const repositoryAnimation = useAnimatedButton()
+  const repositoryOpacity = !showUrl
+    ? repositoryAnimation.animatedValue
+    : '100%'
 
   return (
-    <Pressable onPress={() => handleRepositoryPress()}>
-      <View style={styles.container} testID="repositoryItem">
+    <Pressable
+      onPressIn={repositoryAnimation.fadeIn}
+      onPressOut={repositoryAnimation.fadeOut}
+      onPress={() => handleRepositoryPress()}
+    >
+      <Animated.View
+        style={{
+          opacity: repositoryOpacity,
+          ...styles.container,
+        }}
+        testID="repositoryItem"
+      >
         <CardHeader item={item} />
         <CardFooter item={item} />
         <View style={styles.githubLinkContainer}>
@@ -75,7 +89,7 @@ const RepositoryItem = ({ item, showUrl }) => {
             </Pressable>
           )}
         </View>
-      </View>
+      </Animated.View>
     </Pressable>
   )
 }
