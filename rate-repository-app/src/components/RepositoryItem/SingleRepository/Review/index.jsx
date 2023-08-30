@@ -10,10 +10,10 @@ const styles = StyleSheet.create({
   },
 })
 
-const Review = ({ review }) => {
+const Review = ({ review, repoView, refetch }) => {
   return (
     <View style={styles.container}>
-      <Content review={review} repoView={true} />
+      <Content review={review} repoView={repoView} refetch={refetch} />
     </View>
   )
 }

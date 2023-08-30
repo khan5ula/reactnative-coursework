@@ -48,6 +48,7 @@ export const USER_REVIEWS = gql`
     }
     repository {
       fullName
+      id
     }
   }
 `

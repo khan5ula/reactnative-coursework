@@ -1,4 +1,4 @@
-import { View, FlatList } from 'react-native'
+import { View, FlatList, ActivityIndicator } from 'react-native'
 import theme from '../../theme'
 import RepositoryItem from '../RepositoryItem'
 import useRepositories from '../../hooks/useRepositories'
@@ -15,12 +15,20 @@ const RepositoryListContainer = ({
   setSearchkeyword,
   debouncedKeyword,
 }) => {
-  const { repositories } = useRepositories(
+  const { repositories, loading } = useRepositories(
     orderBy,
     orderDirection,
     searchKeyword,
     debouncedKeyword
   )
+
+  if (loading) {
+    return (
+      <View style={{ marginTop: 20 }}>
+        <ActivityIndicator size="large" color={theme.colors.primary} />
+      </View>
+    )
+  }
 
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)

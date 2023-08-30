@@ -1,0 +1,30 @@
+import { FlatList, StyleSheet, View } from 'react-native'
+import RepositoryItem from '..'
+import theme from '../../../theme'
+import Review from './Review'
+
+const styles = StyleSheet.create({
+  listHeader: {
+    marginBottom: theme.itemSeparator.height,
+  },
+})
+
+const ReviewContainer = ({ reviews, repository }) => {
+  const reviewNodes = reviews ? reviews.edges.map((edge) => edge.node) : []
+  const ItemSeparator = () => <View style={theme.itemSeparator} />
+
+  return (
+    <FlatList
+      data={reviewNodes}
+      ItemSeparatorComponent={ItemSeparator}
+      renderItem={({ item }) => <Review review={item} repoView={true} />}
+      keyExtractor={(item) => item.id}
+      ListHeaderComponent={() => (
+        <RepositoryItem item={repository} showUrl={true} />
+      )}
+      ListHeaderComponentStyle={styles.listHeader}
+    />
+  )
+}
+
+export default ReviewContainer
